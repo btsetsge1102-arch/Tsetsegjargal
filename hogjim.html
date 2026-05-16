@@ -1,0 +1,405 @@
+<!DOCTYPE html><html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Хөгжмийн Ертөнцийн Хэл - Цэцэгжаргал 9Г</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Montserrat:wght@300;400;600;700&family=Russo+One&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-deep: #020617;
+            --primary-cyan: #00f2ff;
+            --dark-blue: #0f172a;
+            --glow: 0 0 15px rgba(0, 242, 255, 0.5);
+            --glass: rgba(15, 23, 42, 0.75);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; user-select: none; }
+
+        body {
+            background-color: var(--bg-deep);
+            background-image: 
+                radial-gradient(at 10% 10%, rgba(0, 119, 255, 0.15) 0px, transparent 50%),
+                radial-gradient(at 90% 90%, rgba(0, 242, 255, 0.1) 0px, transparent 50%);
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        .top-name {
+            width: 100%;
+            padding: 8px 16px;
+            background: rgba(2, 6, 23, 0.9);
+            border-bottom: 1px solid rgba(0, 242, 255, 0.2);
+            color: var(--primary-cyan);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-align: center;
+            text-shadow: var(--glow);
+        }
+
+        /* --- INTRO SCREEN (НЭВТРЭХ ХЭСЭГ) --- */
+        #introScreen {
+            position: fixed;
+            top: 38px; left: 0; width: 100%; height: calc(100vh - 38px);
+            background: radial-gradient(circle at center, #0f172a 0%, #020617 100%);
+            z-index: 1000;
+            display: flex; justify-content: center; align-items: center;
+            transition: all 0.5s ease;
+            padding: 20px;
+        }
+        #introScreen.hidden { opacity: 0; pointer-events: none; transform: scale(1.02); }
+
+        .intro-content {
+            text-align: center;
+            max-width: 550px;
+            width: 100%;
+            padding: 40px 30px;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 242, 255, 0.15);
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+        .intro-title {
+            font-family: 'Russo One', sans-serif;
+            font-size: 2.5rem;
+            color: #fff;
+            text-shadow: var(--glow);
+            letter-spacing: 4px;
+            margin-bottom: 5px;
+        }
+        .intro-subtitle {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        .nickname-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(0, 242, 255, 0.2);
+            border-radius: 14px;
+            padding: 20px;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        .nickname-label {
+            font-size: 0.9rem;
+            color: #e0faff;
+            margin-bottom: 10px;
+            display: block;
+            font-weight: 600;
+        }
+        .nickname-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid rgba(0, 242, 255, 0.4);
+            border-radius: 8px;
+            background: #020617;
+            color: #fff;
+            outline: none;
+            font-size: 1rem;
+        }
+        .nickname-input:focus { border-color: var(--primary-cyan); box-shadow: var(--glow); }
+        .nickname-error { display: none; color: #fca5a5; font-size: 0.85rem; margin-top: 5px; }
+        .nickname-card.error .nickname-error { display: block; }
+
+        .start-btn {
+            background: transparent;
+            color: var(--primary-cyan);
+            border: 2px solid var(--primary-cyan);
+            padding: 14px 40px;
+            font-size: 1.1rem;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 100%;
+        }
+        .start-btn:hover { background: var(--primary-cyan); color: #000; box-shadow: var(--glow); }
+
+        /* --- HEADER --- */
+        header {
+            padding: 15px 30px;
+            background: rgba(0, 0, 0, 0.5);
+            border-bottom: 1px solid rgba(0, 242, 255, 0.15);
+            backdrop-filter: blur(10px);
+            display: flex; justify-content: space-between; align-items: center; gap: 20px;
+        }
+        .logo { font-family: 'Orbitron', sans-serif; font-size: 1.4rem; color: var(--primary-cyan); text-shadow: var(--glow); }
+        
+        .search-container { position: relative; max-width: 400px; width: 100%; }
+        .search-input {
+            width: 100%; padding: 10px 20px; border-radius: 20px; border: 1px solid rgba(0, 242, 255, 0.4);
+            background: rgba(0, 242, 255, 0.05); color: #fff; outline: none; font-size: 0.95rem;
+        }
+        .search-input:focus { border-color: var(--primary-cyan); box-shadow: var(--glow); }
+
+        .sound-controls { display: flex; align-items: center; gap: 10px; color: #cbd5e1; font-size: 0.85rem; font-family: 'Orbitron', sans-serif;}
+        .sound-toggle { padding: 6px 12px; border: 1px solid var(--primary-cyan); background: transparent; color: var(--primary-cyan); border-radius: 12px; cursor: pointer; }
+        .sound-toggle.off { color: #64748b; border-color: #475569; }
+        .volume-slider { width: 80px; accent-color: var(--primary-cyan); }
+
+        .student-info { font-family: 'Orbitron', sans-serif; text-align: right; }
+        .student-name { font-size: 1.1rem; color: #fff; font-weight: 700; }
+        .student-class { font-size: 0.85rem; color: #94a3b8; }
+
+        /* --- MAIN CONTENT (ХӨГЖМИЙН ХУУДАС) --- */
+        .book-container {
+            flex: 1;
+            display: flex; justify-content: center; align-items: center;
+            padding: 40px 20px;
+        }
+        .page-card {
+            width: 100%; max-width: 800px;
+            background: var(--glass);
+            border-radius: 20px;
+            border: 1px solid rgba(0, 242, 255, 0.2);
+            padding: 40px;
+            text-align: center;
+            display: flex; flex-direction: column; align-items: center; gap: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .symbol-visual {
+            height: 180px; width: 180px;
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(0, 242, 255, 0.05);
+            border-radius: 50%;
+            border: 1px dashed rgba(0, 242, 255, 0.3);
+        }
+        .symbol-visual svg { height: 75%; fill: white; filter: drop-shadow(0 0 8px var(--primary-cyan)); }
+        
+        .symbol-name { font-family: 'Orbitron', sans-serif; font-size: 2.2rem; color: #fff; letter-spacing: 2px; }
+        .symbol-desc { font-size: 1.1rem; line-height: 1.6; color: #cbd5e1; max-width: 600px; }
+
+        /* --- CONTROLS BAR (УДИРДЛАГА) --- */
+        .controls-bar {
+            background: rgba(2, 6, 23, 0.85);
+            border-top: 1px solid rgba(0, 242, 255, 0.15);
+            padding: 15px 30px;
+            display: flex; justify-content: center; align-items: center; gap: 40px;
+        }
+        .nav-btn {
+            background: rgba(0, 242, 255, 0.05); border: 2px solid var(--primary-cyan); color: var(--primary-cyan);
+            font-family: 'Orbitron', sans-serif; font-size: 1rem; padding: 10px 30px; border-radius: 20px;
+            cursor: pointer; transition: 0.2s; font-weight: 700;
+        }
+        .nav-btn:hover { background: var(--primary-cyan); color: #000; box-shadow: var(--glow); }
+        .page-counter { font-family: 'Orbitron', sans-serif; font-size: 1.2rem; color: #94a3b8; letter-spacing: 1px; }
+
+        /* --- FEEDBACK PANEL (СЭТГЭГДЭЛ) --- */
+        .feedback-panel {
+            background: #0f172a;
+            border-top: 1px solid rgba(0, 242, 255, 0.15);
+            padding: 25px 30px;
+        }
+        .feedback-title {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px;
+        }
+        .feedback-title h2 { font-family: 'Orbitron', sans-serif; font-size: 1.1rem; color: var(--primary-cyan); }
+        .feedback-title span { font-size: 0.85rem; color: #64748b; }
+
+        .feedback-inner {
+            display: grid; grid-template-columns: auto 1fr auto; gap: 15px; align-items: center;
+            margin-bottom: 20px;
+        }
+        .star-btn { background: transparent; border: none; color: #475569; font-size: 1.4rem; cursor: pointer; transition: 0.1s; }
+        .star-btn.active, .star-btn:hover { color: #facc15; }
+        
+        .feedback-input {
+            width: 100%; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);
+            background: #020617; color: #fff; outline: none; font-family: sans-serif; font-size: 0.95rem; resize: none; height: 45px;
+        }
+        .feedback-input:focus { border-color: var(--primary-cyan); }
+        
+        .feedback-submit {
+            padding: 12px 25px; border: none; background: var(--primary-cyan); color: #000;
+            border-radius: 8px; font-family: 'Orbitron', sans-serif; font-weight: 700; cursor: pointer;
+        }
+
+        .feedback-list { max-height: 120px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; }
+        .feedback-item { background: rgba(255,255,255,0.03); padding: 10px 15px; border-radius: 8px; font-size: 0.9rem; display: flex; justify-content: space-between; }
+        .feedback-item b { color: #facc15; margin-right: 10px; }
+
+        /* --- ГАР УТАСНЫ ТОХИРГОО (RESPONSIVE) --- */
+        @media (max-width: 768px) {
+            header { flex-direction: column; padding: 15px; text-align: center; gap: 12px; }
+            .search-container { max-width: 100%; order: 3; }
+            .student-info { text-align: center; }
+            .book-container { padding: 20px 10px; }
+            .page-card { padding: 25px 15px; gap: 15px; }
+            .symbol-name { font-size: 1.6rem; }
+            .symbol-desc { font-size: 0.95rem; }
+            .controls-bar { gap: 15px; padding: 10px; }
+            .nav-btn { padding: 8px 20px; font-size: 0.9rem; }
+            .feedback-inner { grid-template-columns: 1fr; gap: 10px; }
+            .feedback-submit { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-name">BATKHUREL TSETSEGJARGAL</div>
+
+<div id="introScreen">
+    <div class="intro-content">
+        <div style="font-size: 0.8rem; letter-spacing: 3px; color: var(--primary-cyan); margin-bottom: 10px; font-family: 'Orbitron', sans-serif;">EDITION 2026</div>
+        <h1 class="intro-title">ХӨГЖИМ БИЕ ДААЛТ</h1>
+        <div class="intro-subtitle">ХӨГЖМИЙН ТОЛЬ БИЧИГ // ЦЭЦЭГЖАРГАЛ 9Г</div>
+        
+        <div class="nickname-card" id="nicknameCard">
+            <label class="nickname-label" for="nicknameInput">Nickname-ээ бичээд орно уу</label>
+            <input type="text" id="nicknameInput" class="nickname-input" placeholder="Жишээ: Anu, Temka..." maxlength="20" autocomplete="off">
+            <div class="nickname-error" id="nicknameError">Эхлээд нэрээ оруулна уу!</div>
+        </div>
+        <button class="start-btn" onclick="startApp()">УНШИЖ ЭХЛЭХ</button>
+    </div>
+</div>
+
+<header>
+    <div class="logo">MUSIC BOOK</div>
+    <div class="search-container">
+        <input type="text" id="searchInput" class="search-input" placeholder="Хайх..." autocomplete="off" oninput="searchSymbol()">
+    </div>
+    <div class="sound-controls">
+        <span>ДУУ</span>
+        <button class="sound-toggle" id="soundToggle" onclick="toggleSound()">ON</button>
+        <input type="range" id="volumeSlider" class="volume-slider" min="0" max="100" value="75">
+    </div>
+    <div class="student-info">
+        <div class="student-name">ЦЭЦЭГЖАРГАЛ</div>
+        <div class="student-class">9Г АНГИ</div>
+    </div>
+</header>
+
+<div class="book-container">
+    <div class="page-card">
+        <div class="symbol-visual" id="symbolVisual"></div>
+        <h1 class="symbol-name" id="symbolName">-</h1>
+        <p class="symbol-desc" id="symbolDesc">-</p>
+    </div>
+</div>
+
+<div class="controls-bar">
+    <button class="nav-btn" onclick="prevPage()">ӨМНӨХ</button>
+    <div class="page-counter" id="pageCounter">001 / 003</div>
+    <button class="nav-btn" onclick="nextPage()">ДАРААХ</button>
+</div>
+
+<div class="feedback-panel">
+    <div class="feedback-title">
+        <h2>ИРСЭН СЭТГЭГДЭЛ</h2>
+        <span id="feedbackCount">0 сэтгэгдэл</span>
+    </div>
+    <div class="feedback-inner">
+        <div style="display: flex; gap: 5px;">
+            <button class="star-btn" onclick="setRating(1)">★</button>
+            <button class="star-btn" onclick="setRating(2)">★</button>
+            <button class="star-btn" onclick="setRating(3)">★</button>
+            <button class="star-btn" onclick="setRating(4)">★</button>
+            <button class="star-btn" onclick="setRating(5)">★</button>
+        </div>
+        <input type="text" id="feedbackText" class="feedback-input" placeholder="Сэтгэгдлээ энд бичнэ үү...">
+        <button class="feedback-submit" onclick="submitFeedback()">ИЛГЭЭХ</button>
+    </div>
+    <div class="feedback-list" id="feedbackList"></div>
+</div>
+
+<script>
+    const musicData = [
+        {
+            name: "G ТҮЛХҮҮР",
+            desc: "Хоёрдугаар шугамаас эхлэн бичигддэг тул Соль түлхүүр гэж нэрлэдэг. Өндөр эгшгүүдийг тэмдэглэхэд ашиглана.",
+            svg: `<svg viewBox="0 0 100 100"><text x="50" y="75" font-size="70" text-anchor="middle" fill="white">𝄞</text></svg>`
+        },
+        {
+            name: "F ТҮЛХҮҮР",
+            desc: "Дөрөвдүгээр шугамаас эхлэн бичигддэг тул Фа түлхүүр гэж нэрлэдэг. Налуу, бүдүүн эгшгүүдийг тэмдэглэнэ.",
+            svg: `<svg viewBox="0 0 100 100"><text x="50" y="75" font-size="70" text-anchor="middle" fill="white">𝄢</text></svg>`
+        },
+        {
+            name: "БҮТЭН НОТ",
+            desc: "Дөрвөн цохилт буюу хамгийн урт эгшиглэх хугацаатай нот юм. Дотроо хоосон зууван дугуй хэлбэрээр дүрслэгдэнэ.",
+            svg: `<svg viewBox="0 0 100 100"><text x="50" y="70" font-size="60" text-anchor="middle" fill="white">𝅝</text></svg>`
+        }
+    ];
+
+    let currentPage = 0;
+    let currentUser = "";
+    let currentRating = 0;
+    let soundEnabled = true;
+
+    function startApp() {
+        const input = document.getElementById('nicknameInput').value.trim();
+        if(input === "") {
+            document.getElementById('nicknameCard').classList.add('error');
+            return;
+        }
+        currentUser = input;
+        document.getElementById('introScreen').classList.add('hidden');
+        loadPage(0);
+    }
+
+    function loadPage(index) {
+        if(index < 0 || index >= musicData.length) return;
+        currentPage = index;
+        const item = musicData[index];
+        document.getElementById('symbolName').innerText = item.name;
+        document.getElementById('symbolDesc').innerText = item.desc;
+        document.getElementById('symbolVisual').innerHTML = item.svg;
+        document.getElementById('pageCounter').innerText = `${String(index + 1).padStart(3, '0')} / ${String(musicData.length).padStart(3, '0')}`;
+    }
+
+    function nextPage() { if(currentPage < musicData.length - 1) loadPage(currentPage + 1); }
+    function prevPage() { if(currentPage > 0) loadPage(currentPage - 1); }
+
+    function toggleSound() {
+        soundEnabled = !soundEnabled;
+        const btn = document.getElementById('soundToggle');
+        btn.innerText = soundEnabled ? "ON" : "OFF";
+        btn.classList.toggle('off', !soundEnabled);
+    }
+
+    function setRating(stars) {
+        currentRating = stars;
+        const buttons = document.querySelectorAll('.star-btn');
+        buttons.forEach((btn, idx) => {
+            btn.classList.toggle('active', idx < stars);
+        });
+    }
+
+    function submitFeedback() {
+        const text = document.getElementById('feedbackText').value.trim();
+        if(text === "" && currentRating === 0) return;
+
+        const list = document.getElementById('feedbackList');
+        const item = document.createElement('div');
+        item.className = 'feedback-item';
+        item.innerHTML = `<div><b>${currentUser}:</b> ${text}</div><div style="color:#facc15">${'★'.repeat(currentRating)}</div>`;
+        
+        list.prepend(item);
+        document.getElementById('feedbackText').value = "";
+        setRating(0);
+        document.getElementById('feedbackCount').innerText = `${list.children.length} сэтгэгдэл`;
+    }
+
+    function searchSymbol() {
+        const query = document.getElementById('searchInput').value.toLowerCase();
+        const index = musicData.findIndex(item => item.name.toLowerCase().includes(query) || item.desc.toLowerCase().includes(query));
+        if(index !== -1) loadPage(index);
+    }
+
+    // Анхны хуудсыг харуулах
+    loadPage(0);
+</script>
+
+</body>
+</html>
