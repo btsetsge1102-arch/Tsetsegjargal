@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Хөгжмийн Ертөнцийн Хэл - Цэцэгжаргал 9Г</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Montserrat:wght@300;400;600;700&family=Russo+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght=700;900&family=Montserrat:wght=300;400;600;700&family=Russo+One&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -198,6 +198,7 @@
 </div>
 
 <script>
+    // GitHub Pages дээрх хөтчийн хамгаалалтыг шийдэхийн тулд дууг энд бэлдэж үлдээнэ
     const clickSound = new Audio('universfield-computer-mouse-click-352734.mp3');
     let soundEnabled = true;
 
@@ -206,18 +207,28 @@
         clickSound.volume = volume / 100;
     }
 
+    // Хэрэглэгч товчлуур дарах үед дуу тоглуулах үндсэн функц
+    function playClickSound() {
+        if (soundEnabled) {
+            clickSound.currentTime = 0;
+            clickSound.play().catch(e => console.log("Дуу тоглуулахад алдаа гарлаа (Хөтчийн хамгаалалт):", e));
+        }
+    }
+
+    // Хуудас ачаалагдахад товчлууруудад дууг холбох
     document.addEventListener('DOMContentLoaded', () => {
-        changeVolume(); 
+        changeVolume();
+        setupButtonSounds();
+    });
+
+    function setupButtonSounds() {
         const allButtons = document.querySelectorAll('button');
         allButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                if (soundEnabled) {
-                    clickSound.currentTime = 0; 
-                    clickSound.play().catch(e => console.log("Sound play error:", e));
-                }
-            });
+            // Олон дахин ажиллахаас сэргийлж хуучин event-ийг цэвэрлэнэ
+            btn.removeEventListener('click', playClickSound);
+            btn.addEventListener('click', playClickSound);
         });
-    });
+    }
 
     // --- 105 ХӨГЖМИЙН ТЭМДЭГ, НЭР ТОМЬЁО ---
     const musicData = [
@@ -346,11 +357,11 @@
         { name: "ANIMATO", desc: "Амь орсон мэт сэргэлэн, хөдөлгөөнтэй тоглох.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="22" text-anchor="middle" fill="white" font-style="italic">animato</text></svg>` },
         { name: "CON BRIO", desc: "Цог жавхлантай, гялалзсан хурц байдлаар.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="22" text-anchor="middle" fill="white" font-style="italic">con brio</text></svg>` },
         { name: "ESPRESSIVO", desc: "Сэтгэлийн хөдөлгөөнөө илэрхийлж, мэдрэмжтэй тоглох.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="20" text-anchor="middle" fill="white" font-style="italic">espressivo</text></svg>` },
-        { name: "GRAZIOSO", desc: "Уян налархай, гоолиг тансаг тоглох.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="22" text-anchor="middle" fill="white" font-style="italic">grazioso</text></svg>` },
+        { name: "GRAZIOSO", desc: "Уян naлархай, гоолиг тансаг тоглох.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="22" text-anchor="middle" fill="white" font-style="italic">grazioso</text></svg>` },
         { name: "AGITATO", desc: "Догдолсон, түгшсэн, тайван бус байдлаар.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="25" text-anchor="middle" fill="white" font-style="italic">agitato</text></svg>` },
         { name: "BRILLANTE", desc: "Гялалзсан, маш тод, гайхалтай аргаар тоглох.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="22" text-anchor="middle" fill="white" font-style="italic">brillante</text></svg>` },
         { name: "SCHERZANDO", desc: "Тоглоомтой, хөгжилтэй, дэггүй байдлаар.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="20" text-anchor="middle" fill="white" font-style="italic">scherzando</text></svg>` },
-        { name: "TRANQUILLO", desc: "Амар амгалан, тайван тоглох.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="22" text-anchor="middle" fill="white" font-style="italic">tranquillo</text></svg>` },
+        { name: "TRANQUILLO", desc: "Амар амгалан, тайван тоглох.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="22" font-size="22" text-anchor="middle" fill="white" font-style="italic">tranquillo</text></svg>` },
         { name: "TUTTI", desc: "Оркестр эсвэл хамтлагийн бүх хөгжимчид нэгэн зэрэг тоглохыг заана.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="25" text-anchor="middle" fill="white" font-weight="bold">Tutti</text></svg>` },
         { name: "SOLO", desc: "Нэг хөгжимчин гоцлон тоглох хэсэг.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="25" text-anchor="middle" fill="white" font-weight="bold">Solo</text></svg>` },
         { name: "PIZZICATO", desc: "Нумат хөгжмийн (хийл зэрэг) утсыг хуруугаараа татаж дуугаргах арга.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="25" text-anchor="middle" fill="white" font-style="italic">pizz.</text></svg>` },
@@ -375,6 +386,12 @@
             return;
         }
         currentUser = input;
+
+        // Хөтчийн хамгаалалтыг идэвхгүй болгохын тулд дууг нэг удаа аяархан тоглуулж нээнэ
+        clickSound.play().then(() => {
+            clickSound.currentTime = 0;
+        }).catch(e => console.log("Init sound pass"));
+
         document.getElementById('introScreen').classList.add('hidden');
         loadPage(0);
     }
@@ -420,6 +437,9 @@
         document.getElementById('feedbackText').value = "";
         setRating(0);
         document.getElementById('feedbackCount').innerText = `${list.children.length} сэтгэгдэл`;
+        
+        // Шинээр нэмэгдсэн товчлууруудад дууг дахин холбох
+        setupButtonSounds();
     }
 
     function searchSymbol() {
