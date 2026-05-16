@@ -43,193 +43,77 @@
             text-shadow: var(--glow);
         }
 
-        /* --- INTRO SCREEN (НЭВТРЭХ ХЭСЭГ) --- */
+        /* --- INTRO SCREEN --- */
         #introScreen {
-            position: fixed;
-            top: 38px; left: 0; width: 100%; height: calc(100vh - 38px);
+            position: fixed; top: 38px; left: 0; width: 100%; height: calc(100vh - 38px);
             background: radial-gradient(circle at center, #0f172a 0%, #020617 100%);
-            z-index: 1000;
-            display: flex; justify-content: center; align-items: center;
-            transition: all 0.5s ease;
-            padding: 20px;
+            z-index: 1000; display: flex; justify-content: center; align-items: center;
+            transition: all 0.5s ease; padding: 20px;
         }
         #introScreen.hidden { opacity: 0; pointer-events: none; transform: scale(1.02); }
 
         .intro-content {
-            text-align: center;
-            max-width: 550px;
-            width: 100%;
-            padding: 40px 30px;
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(0, 242, 255, 0.15);
-            border-radius: 24px;
+            text-align: center; max-width: 550px; width: 100%; padding: 40px 30px;
+            background: var(--glass); backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 242, 255, 0.15); border-radius: 24px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         }
-        .intro-title {
-            font-family: 'Russo One', sans-serif;
-            font-size: 2.5rem;
-            color: #fff;
-            text-shadow: var(--glow);
-            letter-spacing: 4px;
-            margin-bottom: 5px;
-        }
-        .intro-subtitle {
-            font-size: 0.9rem;
-            color: #94a3b8;
-            letter-spacing: 2px;
-            margin-bottom: 30px;
-        }
+        .intro-title { font-family: 'Russo One', sans-serif; font-size: 2.5rem; color: #fff; text-shadow: var(--glow); letter-spacing: 4px; margin-bottom: 5px; }
+        .intro-subtitle { font-size: 0.9rem; color: #94a3b8; letter-spacing: 2px; margin-bottom: 30px; }
 
-        .nickname-card {
-            background: rgba(15, 23, 42, 0.6);
-            border: 1px solid rgba(0, 242, 255, 0.2);
-            border-radius: 14px;
-            padding: 20px;
-            margin-bottom: 25px;
-            text-align: left;
-        }
-        .nickname-label {
-            font-size: 0.9rem;
-            color: #e0faff;
-            margin-bottom: 10px;
-            display: block;
-            font-weight: 600;
-        }
-        .nickname-input {
-            width: 100%;
-            padding: 12px 16px;
-            border: 1px solid rgba(0, 242, 255, 0.4);
-            border-radius: 8px;
-            background: #020617;
-            color: #fff;
-            outline: none;
-            font-size: 1rem;
-        }
+        .nickname-card { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(0, 242, 255, 0.2); border-radius: 14px; padding: 20px; margin-bottom: 25px; text-align: left; }
+        .nickname-label { font-size: 0.9rem; color: #e0faff; margin-bottom: 10px; display: block; font-weight: 600; }
+        .nickname-input { width: 100%; padding: 12px 16px; border: 1px solid rgba(0, 242, 255, 0.4); border-radius: 8px; background: #020617; color: #fff; outline: none; font-size: 1rem; }
         .nickname-input:focus { border-color: var(--primary-cyan); box-shadow: var(--glow); }
         .nickname-error { display: none; color: #fca5a5; font-size: 0.85rem; margin-top: 5px; }
         .nickname-card.error .nickname-error { display: block; }
 
-        .start-btn {
-            background: transparent;
-            color: var(--primary-cyan);
-            border: 2px solid var(--primary-cyan);
-            padding: 14px 40px;
-            font-size: 1.1rem;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: 0.3s;
-            width: 100%;
-        }
+        .start-btn { background: transparent; color: var(--primary-cyan); border: 2px solid var(--primary-cyan); padding: 14px 40px; font-size: 1.1rem; font-family: 'Orbitron', sans-serif; font-weight: 700; border-radius: 30px; cursor: pointer; transition: 0.3s; width: 100%; }
         .start-btn:hover { background: var(--primary-cyan); color: #000; box-shadow: var(--glow); }
 
         /* --- HEADER --- */
-        header {
-            padding: 15px 30px;
-            background: rgba(0, 0, 0, 0.5);
-            border-bottom: 1px solid rgba(0, 242, 255, 0.15);
-            backdrop-filter: blur(10px);
-            display: flex; justify-content: space-between; align-items: center; gap: 20px;
-        }
+        header { padding: 15px 30px; background: rgba(0, 0, 0, 0.5); border-bottom: 1px solid rgba(0, 242, 255, 0.15); backdrop-filter: blur(10px); display: flex; justify-content: space-between; align-items: center; gap: 20px; }
         .logo { font-family: 'Orbitron', sans-serif; font-size: 1.4rem; color: var(--primary-cyan); text-shadow: var(--glow); }
-        
         .search-container { position: relative; max-width: 400px; width: 100%; }
-        .search-input {
-            width: 100%; padding: 10px 20px; border-radius: 20px; border: 1px solid rgba(0, 242, 255, 0.4);
-            background: rgba(0, 242, 255, 0.05); color: #fff; outline: none; font-size: 0.95rem;
-        }
+        .search-input { width: 100%; padding: 10px 20px; border-radius: 20px; border: 1px solid rgba(0, 242, 255, 0.4); background: rgba(0, 242, 255, 0.05); color: #fff; outline: none; font-size: 0.95rem; }
         .search-input:focus { border-color: var(--primary-cyan); box-shadow: var(--glow); }
-
         .sound-controls { display: flex; align-items: center; gap: 10px; color: #cbd5e1; font-size: 0.85rem; font-family: 'Orbitron', sans-serif;}
         .sound-toggle { padding: 6px 12px; border: 1px solid var(--primary-cyan); background: transparent; color: var(--primary-cyan); border-radius: 12px; cursor: pointer; }
         .sound-toggle.off { color: #64748b; border-color: #475569; }
         .volume-slider { width: 80px; accent-color: var(--primary-cyan); }
-
         .student-info { font-family: 'Orbitron', sans-serif; text-align: right; }
         .student-name { font-size: 1.1rem; color: #fff; font-weight: 700; }
         .student-class { font-size: 0.85rem; color: #94a3b8; }
 
-        /* --- MAIN CONTENT (ХӨГЖМИЙН ХУУДАС) --- */
-        .book-container {
-            flex: 1;
-            display: flex; justify-content: center; align-items: center;
-            padding: 40px 20px;
-        }
-        .page-card {
-            width: 100%; max-width: 800px;
-            background: var(--glass);
-            border-radius: 20px;
-            border: 1px solid rgba(0, 242, 255, 0.2);
-            padding: 40px;
-            text-align: center;
-            display: flex; flex-direction: column; align-items: center; gap: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-        .symbol-visual {
-            height: 180px; width: 180px;
-            display: flex; align-items: center; justify-content: center;
-            background: rgba(0, 242, 255, 0.05);
-            border-radius: 50%;
-            border: 1px dashed rgba(0, 242, 255, 0.3);
-        }
-        .symbol-visual svg { height: 75%; fill: white; filter: drop-shadow(0 0 8px var(--primary-cyan)); }
-        
+        /* --- MAIN CONTENT --- */
+        .book-container { flex: 1; display: flex; justify-content: center; align-items: center; padding: 40px 20px; }
+        .page-card { width: 100%; max-width: 800px; background: var(--glass); border-radius: 20px; border: 1px solid rgba(0, 242, 255, 0.2); padding: 40px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .symbol-visual { height: 180px; width: 180px; display: flex; align-items: center; justify-content: center; background: rgba(0, 242, 255, 0.05); border-radius: 50%; border: 1px dashed rgba(0, 242, 255, 0.3); }
+        .symbol-visual svg { height: 75%; width: 75%; fill: white; filter: drop-shadow(0 0 8px var(--primary-cyan)); }
         .symbol-name { font-family: 'Orbitron', sans-serif; font-size: 2.2rem; color: #fff; letter-spacing: 2px; }
         .symbol-desc { font-size: 1.1rem; line-height: 1.6; color: #cbd5e1; max-width: 600px; }
 
-        /* --- CONTROLS BAR (УДИРДЛАГА) --- */
-        .controls-bar {
-            background: rgba(2, 6, 23, 0.85);
-            border-top: 1px solid rgba(0, 242, 255, 0.15);
-            padding: 15px 30px;
-            display: flex; justify-content: center; align-items: center; gap: 40px;
-        }
-        .nav-btn {
-            background: rgba(0, 242, 255, 0.05); border: 2px solid var(--primary-cyan); color: var(--primary-cyan);
-            font-family: 'Orbitron', sans-serif; font-size: 1rem; padding: 10px 30px; border-radius: 20px;
-            cursor: pointer; transition: 0.2s; font-weight: 700;
-        }
+        /* --- CONTROLS --- */
+        .controls-bar { background: rgba(2, 6, 23, 0.85); border-top: 1px solid rgba(0, 242, 255, 0.15); padding: 15px 30px; display: flex; justify-content: center; align-items: center; gap: 40px; }
+        .nav-btn { background: rgba(0, 242, 255, 0.05); border: 2px solid var(--primary-cyan); color: var(--primary-cyan); font-family: 'Orbitron', sans-serif; font-size: 1rem; padding: 10px 30px; border-radius: 20px; cursor: pointer; transition: 0.2s; font-weight: 700; }
         .nav-btn:hover { background: var(--primary-cyan); color: #000; box-shadow: var(--glow); }
         .page-counter { font-family: 'Orbitron', sans-serif; font-size: 1.2rem; color: #94a3b8; letter-spacing: 1px; }
 
-        /* --- FEEDBACK PANEL (СЭТГЭГДЭЛ) --- */
-        .feedback-panel {
-            background: #0f172a;
-            border-top: 1px solid rgba(0, 242, 255, 0.15);
-            padding: 25px 30px;
-        }
-        .feedback-title {
-            display: flex; justify-content: space-between; align-items: center;
-            margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px;
-        }
+        /* --- FEEDBACK --- */
+        .feedback-panel { background: #0f172a; border-top: 1px solid rgba(0, 242, 255, 0.15); padding: 25px 30px; }
+        .feedback-title { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px; }
         .feedback-title h2 { font-family: 'Orbitron', sans-serif; font-size: 1.1rem; color: var(--primary-cyan); }
         .feedback-title span { font-size: 0.85rem; color: #64748b; }
-
-        .feedback-inner {
-            display: grid; grid-template-columns: auto 1fr auto; gap: 15px; align-items: center;
-            margin-bottom: 20px;
-        }
+        .feedback-inner { display: grid; grid-template-columns: auto 1fr auto; gap: 15px; align-items: center; margin-bottom: 20px; }
         .star-btn { background: transparent; border: none; color: #475569; font-size: 1.4rem; cursor: pointer; transition: 0.1s; }
         .star-btn.active, .star-btn:hover { color: #facc15; }
-        
-        .feedback-input {
-            width: 100%; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);
-            background: #020617; color: #fff; outline: none; font-family: sans-serif; font-size: 0.95rem; resize: none; height: 45px;
-        }
+        .feedback-input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); background: #020617; color: #fff; outline: none; font-family: sans-serif; font-size: 0.95rem; resize: none; height: 45px; }
         .feedback-input:focus { border-color: var(--primary-cyan); }
-        
-        .feedback-submit {
-            padding: 12px 25px; border: none; background: var(--primary-cyan); color: #000;
-            border-radius: 8px; font-family: 'Orbitron', sans-serif; font-weight: 700; cursor: pointer;
-        }
-
+        .feedback-submit { padding: 12px 25px; border: none; background: var(--primary-cyan); color: #000; border-radius: 8px; font-family: 'Orbitron', sans-serif; font-weight: 700; cursor: pointer; }
         .feedback-list { max-height: 120px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; }
         .feedback-item { background: rgba(255,255,255,0.03); padding: 10px 15px; border-radius: 8px; font-size: 0.9rem; display: flex; justify-content: space-between; }
         .feedback-item b { color: #facc15; margin-right: 10px; }
 
-        /* --- ГАР УТАСНЫ ТОХИРГОО (RESPONSIVE) --- */
         @media (max-width: 768px) {
             header { flex-direction: column; padding: 15px; text-align: center; gap: 12px; }
             .search-container { max-width: 100%; order: 3; }
@@ -272,7 +156,7 @@
     <div class="sound-controls">
         <span>ДУУ</span>
         <button class="sound-toggle" id="soundToggle" onclick="toggleSound()">ON</button>
-        <input type="range" id="volumeSlider" class="volume-slider" min="0" max="100" value="75">
+        <input type="range" id="volumeSlider" class="volume-slider" min="0" max="100" value="75" oninput="changeVolume()">
     </div>
     <div class="student-info">
         <div class="student-name">ЦЭЦЭГЖАРГАЛ</div>
@@ -290,7 +174,7 @@
 
 <div class="controls-bar">
     <button class="nav-btn" onclick="prevPage()">ӨМНӨХ</button>
-    <div class="page-counter" id="pageCounter">001 / 003</div>
+    <div class="page-counter" id="pageCounter">000 / 000</div>
     <button class="nav-btn" onclick="nextPage()">ДАРААХ</button>
 </div>
 
@@ -314,28 +198,175 @@
 </div>
 
 <script>
+    const clickSound = new Audio('universfield-computer-mouse-click-352734.mp3');
+    let soundEnabled = true;
+
+    function changeVolume() {
+        const volume = document.getElementById('volumeSlider').value;
+        clickSound.volume = volume / 100;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        changeVolume(); 
+        const allButtons = document.querySelectorAll('button');
+        allButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (soundEnabled) {
+                    clickSound.currentTime = 0; 
+                    clickSound.play().catch(e => console.log("Sound play error:", e));
+                }
+            });
+        });
+    });
+
+    // --- 105 ХӨГЖМИЙН ТЭМДЭГ, НЭР ТОМЬЁО ---
     const musicData = [
-        {
-            name: "G ТҮЛХҮҮР",
-            desc: "Хоёрдугаар шугамаас эхлэн бичигддэг тул Соль түлхүүр гэж нэрлэдэг. Өндөр эгшгүүдийг тэмдэглэхэд ашиглана.",
-            svg: `<svg viewBox="0 0 100 100"><text x="50" y="75" font-size="70" text-anchor="middle" fill="white">𝄞</text></svg>`
-        },
-        {
-            name: "F ТҮЛХҮҮР",
-            desc: "Дөрөвдүгээр шугамаас эхлэн бичигддэг тул Фа түлхүүр гэж нэрлэдэг. Налуу, бүдүүн эгшгүүдийг тэмдэглэнэ.",
-            svg: `<svg viewBox="0 0 100 100"><text x="50" y="75" font-size="70" text-anchor="middle" fill="white">𝄢</text></svg>`
-        },
-        {
-            name: "БҮТЭН НОТ",
-            desc: "Дөрвөн цохилт буюу хамгийн урт эгшиглэх хугацаатай нот юм. Дотроо хоосон зууван дугуй хэлбэрээр дүрслэгдэнэ.",
-            svg: `<svg viewBox="0 0 100 100"><text x="50" y="70" font-size="60" text-anchor="middle" fill="white">𝅝</text></svg>`
-        }
+        // 1. ТҮЛХҮҮРҮҮД (Clefs)
+        { name: "G ТҮЛХҮҮР (Соль)", desc: "2-р шугамаас эхлэн бичигддэг, өндөр эгшгүүдийг тэмдэглэнэ.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white">𝄞</text></svg>` },
+        { name: "F ТҮЛХҮҮР (Фа)", desc: "4-р шугамаас эхлэн бичигддэг, бүдүүн нам эгшгүүдийг тэмдэглэнэ.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white">𝄢</text></svg>` },
+        { name: "C ТҮЛХҮҮР (Альт)", desc: "3-р шугам дээр 'До' эгшиг байрлах бөгөөд дунд зэргийн өндөрт ашиглана.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white">𝄡</text></svg>` },
+        { name: "C ТҮЛХҮҮР (Тенор)", desc: "4-р шугам дээр 'До' эгшиг байрлах бөгөөд виолончель, фагот зэрэгт хэрэглэнэ.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white">𝄡</text></svg>` },
+        { name: "ЦОХИЛТТЫН ТҮЛХҮҮР", desc: "Тодорхой эгшгийн өндөргүй, хэмнэлт цохилтот хөгжмийн зэмсэгт зориулагдсан түлхүүр.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white">𝄣</text></svg>` },
+        
+        // 2. НОТУУД (Notes)
+        { name: "БРЕВЕ (Хос бүтэн нот)", desc: "Бүтэн нотоос 2 дахин урт буюу 8 цохилтын турш эгшиглэнэ.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="70" font-size="60" text-anchor="middle" fill="white">𝅜</text></svg>` },
+        { name: "БҮТЭН НОТ", desc: "4 цохилтын турш эгшиглэх хугацаатай. Хоосон зууван толгойтой.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="70" font-size="60" text-anchor="middle" fill="white">𝅝</text></svg>` },
+        { name: "ХАГАС НОТ", desc: "2 цохилтоор эгшиглэнэ. Бүтэн нотын хагастай тэнцэнэ.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white">𝅗𝅥</text></svg>` },
+        { name: "ДӨРӨВТ НОТ", desc: "1 цохилтоор эгшиглэнэ. Хар толгойтой, иштэй.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white">𝅘𝅥</text></svg>` },
+        { name: "НАЙМТ НОТ", desc: "0.5 буюу хагас цохилтоор эгшиглэнэ. Ишнээсээ 1 сүүлтэй.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white">𝅘𝅥𝅮</text></svg>` },
+        { name: "16-Т НОТ", desc: "0.25 буюу дөрөвний нэг цохилтоор эгшиглэнэ. 2 сүүлтэй.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white">𝅘𝅥𝅯</text></svg>` },
+        { name: "32-Т НОТ", desc: "Наймны нэг цохилтоор эгшиглэнэ. 3 сүүлтэй маш богино нот.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white">𝅘𝅥𝅰</text></svg>` },
+        { name: "64-Т НОТ", desc: "Маш хурдан хугацаанд эгшиглэх 4 сүүлтэй нот.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white">𝅘𝅥𝅱</text></svg>` },
+        { name: "ЦЭГТЭЙ ХАГАС НОТ", desc: "3 цохилтоор эгшиглэнэ. Цэг нь нотын хугацааг өөрийнх нь хагасаар уртасгадаг.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="70" text-anchor="middle" fill="white">𝅗𝅥.</text></svg>` },
+        { name: "ЦЭГТЭЙ ДӨРӨВТ НОТ", desc: "1.5 цохилтоор эгшиглэнэ.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="70" text-anchor="middle" fill="white">𝅘𝅥.</text></svg>` },
+
+        // 3. ЗОГСОЦУУД (Rests)
+        { name: "БҮТЭН ЗОГСОЦ", desc: "4 цохилтын турш чимээгүй байна. 4-р шугамаас доош дүүжлэгдсэн хэлбэртэй.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white">𝄻</text></svg>` },
+        { name: "ХАГАС ЗОГСОЦ", desc: "2 цохилтын турш чимээгүй байна. 3-р шугам дээр суусан хэлбэртэй.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white">𝄼</text></svg>` },
+        { name: "ДӨРӨВТ ЗОГСОЦ", desc: "1 цохилтын турш чимээгүй байна.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white">𝄽</text></svg>` },
+        { name: "НАЙМТ ЗОГСОЦ", desc: "Хагас цохилтын турш чимээгүй байна.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white">𝄾</text></svg>` },
+        { name: "16-Т ЗОГСОЦ", desc: "0.25 цохилтоор зогсоно. 2 толгойтой.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white">𝄿</text></svg>` },
+        { name: "32-Т ЗОГСОЦ", desc: "Маш богино хугацааны зогсоц. 3 толгойтой.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white">𝅀</text></svg>` },
+        { name: "64-Т ЗОГСОЦ", desc: "Нүд ирмэх зуурын зогсоц. 4 толгойтой.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white">𝅁</text></svg>` },
+
+        // 4. ТЭМДЭГҮҮД / АЛЬТЕРАЦИ (Accidentals)
+        { name: "ДИЕЗ (Sharp)", desc: "Эгшгийг хагас тон (алхам)-оор өндөржүүлнэ.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white">♯</text></svg>` },
+        { name: "БЕМОЛЬ (Flat)", desc: "Эгшгийг хагас тон (алхам)-оор намсгана.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white">♭</text></svg>` },
+        { name: "БЕКАР (Natural)", desc: "Өмнөх диез, бемолийн үйлчлэлийг цуцалж үндсэн эгшгээр дуугаргана.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white">♮</text></svg>` },
+        { name: "ДУБЛЬ ДИЕЗ", desc: "Эгшгийг бүтэн тоноор өндөржүүлнэ.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white">𝄪</text></svg>` },
+        { name: "ДУБЛЬ БЕМОЛЬ", desc: "Эгшгийг бүтэн тоноор намсгана.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white">𝄫</text></svg>` },
+
+        // 5. ДИНАМИК / ХҮЧ (Dynamics)
+        { name: "PIANISSISSIMO", desc: "Маш маш аяархан, бараг шивнээ шахуу дуугаргана. (ppp)", svg: `<svg viewBox="0 0 100 100"><text x="50" y="70" font-size="45" text-anchor="middle" fill="white" font-style="italic" font-family="serif">ppp</text></svg>` },
+        { name: "PIANISSIMO", desc: "Маш аяархан дуугаргана. (pp)", svg: `<svg viewBox="0 0 100 100"><text x="50" y="70" font-size="55" text-anchor="middle" fill="white" font-style="italic" font-family="serif">pp</text></svg>` },
+        { name: "PIANO", desc: "Аяархан, зөөлөн дуугаргана. (p)", svg: `<svg viewBox="0 0 100 100"><text x="50" y="70" font-size="70" text-anchor="middle" fill="white" font-style="italic" font-family="serif">p</text></svg>` },
+        { name: "MEZZO PIANO", desc: "Дунд зэргийн аяархан дуугаргана. (mp)", svg: `<svg viewBox="0 0 100 100"><text x="50" y="70" font-size="55" text-anchor="middle" fill="white" font-style="italic" font-family="serif">mp</text></svg>` },
+        { name: "MEZZO FORTE", desc: "Дунд зэргийн чанга дуугаргана. (mf)", svg: `<svg viewBox="0 0 100 100"><text x="50" y="70" font-size="55" text-anchor="middle" fill="white" font-style="italic" font-family="serif">mf</text></svg>` },
+        { name: "FORTE", desc: "Чанга, хүчтэй дуугаргана. (f)", svg: `<svg viewBox="0 0 100 100"><text x="50" y="70" font-size="70" text-anchor="middle" fill="white" font-style="italic" font-family="serif">f</text></svg>` },
+        { name: "FORTISSIMO", desc: "Маш чанга дуугаргана. (ff)", svg: `<svg viewBox="0 0 100 100"><text x="50" y="70" font-size="55" text-anchor="middle" fill="white" font-style="italic" font-family="serif">ff</text></svg>` },
+        { name: "FORTISSISSIMO", desc: "Хамгийн чангаар, маш их хүчтэй дуугаргана. (fff)", svg: `<svg viewBox="0 0 100 100"><text x="50" y="70" font-size="45" text-anchor="middle" fill="white" font-style="italic" font-family="serif">fff</text></svg>` },
+        { name: "SFORZANDO", desc: "Тухайн нот эсвэл аккордыг гэнэтийн хүчтэй өргөлттэйгөөр дуугаргана. (sfz)", svg: `<svg viewBox="0 0 100 100"><text x="50" y="70" font-size="45" text-anchor="middle" fill="white" font-style="italic" font-family="serif">sfz</text></svg>` },
+        { name: "FORTEPIANO", desc: "Чанга эхлээд шууд огцом аяархан болно. (fp)", svg: `<svg viewBox="0 0 100 100"><text x="50" y="70" font-size="50" text-anchor="middle" fill="white" font-style="italic" font-family="serif">fp</text></svg>` },
+        { name: "CRESCENDO", desc: "Аажмаар чангаруулахыг заасан тэмдэг.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="75" font-size="60" text-anchor="middle" fill="white" font-weight="bold"><</text></svg>` },
+        { name: "DECRESCENDO", desc: "Аажмаар аяархан болгохыг заана. (Мөн Diminuendo гэдэг)", svg: `<svg viewBox="0 0 100 100"><text x="50" y="75" font-size="60" text-anchor="middle" fill="white" font-weight="bold">></text></svg>` },
+        { name: "DIMINUENDO", desc: "Аажмаар сулрах, аяархан болох. (dim.)", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="30" text-anchor="middle" fill="white" font-style="italic">dim.</text></svg>` },
+        { name: "RINFORZANDO", desc: "Тодорхой хэсэг эсвэл хэллэгийг хүчтэй болгох. (rfz)", svg: `<svg viewBox="0 0 100 100"><text x="50" y="70" font-size="45" text-anchor="middle" fill="white" font-style="italic" font-family="serif">rfz</text></svg>` },
+        
+        // 6. АРТИКУЛЯЦИ БА ЧИМЭГЛЭЛ (Articulations & Ornaments)
+        { name: "STACCATO (Стаккато)", desc: "Нотыг хугацаанаас нь өмнө тасалж, товчхон үсрэлттэй дуугаргана.", svg: `<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="10" fill="white"/></svg>` },
+        { name: "STACCATISSIMO", desc: "Стаккатогоос илүү хурц, маш богинохон тасалж тоглоно.", svg: `<svg viewBox="0 0 100 100"><path d="M40,30 L60,30 L50,70 Z" fill="white"/></svg>` },
+        { name: "ACCENT (Акцент)", desc: "Тухайн нотыг бусдаас илүү хүчтэй, өргөлттэй дуугаргана.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="70" font-size="70" text-anchor="middle" fill="white">></text></svg>` },
+        { name: "MARCATO", desc: "Акцентээс илүү хурц, онцгой тодруулж тоглохыг заана.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="70" font-size="70" text-anchor="middle" fill="white">^</text></svg>` },
+        { name: "TENUTO (Тенуто)", desc: "Нотын хугацааг яг гүйцэд, жин тавьж уртаар барьж тоглоно.", svg: `<svg viewBox="0 0 100 100"><rect x="30" y="45" width="40" height="10" fill="white"/></svg>` },
+        { name: "FERMATA (Фермата)", desc: "Зохиогч эсвэл удирдаачийн мэдрэмжээр нотыг хүссэн хугацаагаар уртасган барина.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white">𝄐</text></svg>` },
+        { name: "TRILL (Трилл)", desc: "Хоёр зэргэлдээ нотыг маш хурдан ээлжлэн давтаж тоглох чимэглэл.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="70" font-size="50" text-anchor="middle" fill="white" font-style="italic">tr</text></svg>` },
+        { name: "MORDENT (Мордент)", desc: "Үндсэн эгшиг, түүний дээд (эсвэл доод) эгшигтэй хурдан солигдоод буцаж ирэх чимэглэл.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="75" font-size="60" text-anchor="middle" fill="white">𝆱</text></svg>` },
+        { name: "TURN (Группетто)", desc: "Үндсэн нот болон түүний дээд, доод нотуудыг ороож тоглох чимэглэл.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="70" font-size="70" text-anchor="middle" fill="white">∽</text></svg>` },
+        { name: "SLUR (Лиг)", desc: "Хоёр буюу түүнээс дээш өөр өөр нотуудыг таслахгүйгээр, холбож уян хатан тоглоно.", svg: `<svg viewBox="0 0 100 100"><path d="M10,50 Q50,90 90,50" fill="none" stroke="white" stroke-width="6"/></svg>` },
+        { name: "TIE (Залгаас)", desc: "Ижил өндөртэй хоёр нотыг холбож, нийлбэр хугацаагаар нь нэгтгэн дуугаргана.", svg: `<svg viewBox="0 0 100 100"><path d="M20,60 Q50,80 80,60" fill="none" stroke="white" stroke-width="5"/></svg>` },
+        { name: "GLISSANDO", desc: "Нэг нотоос нөгөө нот руу завсрын бүх эгшгүүдийг гулсуулан тоглох арга.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="25" text-anchor="middle" fill="white" font-style="italic">gliss.</text></svg>` },
+        { name: "ARPEGGIO", desc: "Аккордын нотуудыг нэгэн зэрэг бус, доороос нь дээш нь ар араас нь цувруулан тоглоно.", svg: `<svg viewBox="0 0 100 100"><path d="M45,20 Q55,30 45,40 Q35,50 45,60 Q55,70 45,80" fill="none" stroke="white" stroke-width="4"/></svg>` },
+        { name: "APPOGGIATURA", desc: "Үндсэн нотын өмнө бичигдсэн жижиг нот. Өөрийн хугацааг үндсэн нотоос авч тоглоно.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="70" font-size="40" text-anchor="middle" fill="white">𝅘𝅥𝅮</text></svg>` },
+        { name: "ACCIACCATURA", desc: "Ишэн дундуураа зураастай жижиг нот. Үндсэн нотын өмнө маш хурдан шүргэж тоглоно.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="70" font-size="40" text-anchor="middle" fill="white">𝅘𝅥𝅯</text></svg>` },
+
+        // 7. ХУРД (Tempo)
+        { name: "GRAVE (Граве)", desc: "Маш удаан, хүнд, сүрлэг хурд.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="25" text-anchor="middle" fill="white" font-weight="bold">Grave</text></svg>` },
+        { name: "LARGO (Ларго)", desc: "Өргөн, уужим, маш удаан хурд.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="25" text-anchor="middle" fill="white" font-weight="bold">Largo</text></svg>` },
+        { name: "LENTO (Ленто)", desc: "Удаанаар, сунгаж тоглох хурд.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="25" text-anchor="middle" fill="white" font-weight="bold">Lento</text></svg>` },
+        { name: "ADAGIO (Адажио)", desc: "Удаан, тайван хурд.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="25" text-anchor="middle" fill="white" font-weight="bold">Adagio</text></svg>` },
+        { name: "ANDANTE (Анданте)", desc: "Алхаж буй мэт тайван, дунд зэргийн удаан хурд.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="25" text-anchor="middle" fill="white" font-weight="bold">Andante</text></svg>` },
+        { name: "ANDANTINO", desc: "Андантегаас бага зэрэг хурдан.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="20" text-anchor="middle" fill="white" font-weight="bold">Andantino</text></svg>` },
+        { name: "MODERATO (Модерато)", desc: "Дунд зэргийн хурд. Хэт удаан биш, хэт хурдан биш.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="22" text-anchor="middle" fill="white" font-weight="bold">Moderato</text></svg>` },
+        { name: "ALLEGRETTO", desc: "Аллегрогоос арай удаан, хөгжилтэй хурд.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="20" text-anchor="middle" fill="white" font-weight="bold">Allegretto</text></svg>` },
+        { name: "ALLEGRO (Аллегро)", desc: "Хурдан, цоглог, хөгжилтэй хурд.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="25" text-anchor="middle" fill="white" font-weight="bold">Allegro</text></svg>` },
+        { name: "VIVACE (Виваче)", desc: "Амьд, цоглог, маш хурдан.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="25" text-anchor="middle" fill="white" font-weight="bold">Vivace</text></svg>` },
+        { name: "PRESTO (Престо)", desc: "Маш хурдан.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="25" text-anchor="middle" fill="white" font-weight="bold">Presto</text></svg>` },
+        { name: "PRESTISSIMO", desc: "Байж болох хамгийн хурднаар.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="20" text-anchor="middle" fill="white" font-weight="bold">Prestissimo</text></svg>` },
+        { name: "ACCELERANDO", desc: "Хурдыг аажмаар нэмэх, түргэсгэх. (accel.)", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="25" text-anchor="middle" fill="white" font-style="italic">accel.</text></svg>` },
+        { name: "RITARDANDO", desc: "Хурдыг аажмаар сааруулах, удаашруулах. (rit.)", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="25" text-anchor="middle" fill="white" font-style="italic">rit.</text></svg>` },
+        { name: "RALLENTANDO", desc: "Хурдыг өргөнөөр, алгуур сааруулах. (rall.)", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="25" text-anchor="middle" fill="white" font-style="italic">rall.</text></svg>` },
+        { name: "RITENUTO", desc: "Гэнэт хурдыг сааруулах.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="25" text-anchor="middle" fill="white" font-style="italic">riten.</text></svg>` },
+        { name: "A TEMPO", desc: "Өөрчлөгдсөн хурднаас буцаад анхны хурдандаа орох.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="22" text-anchor="middle" fill="white" font-weight="bold">a tempo</text></svg>` },
+        { name: "TEMPO I", desc: "Зохиолын хамгийн эхний хурд руу буцах. (Tempo primo)", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="22" text-anchor="middle" fill="white" font-weight="bold">Tempo I</text></svg>` },
+        { name: "RUBATO (Рубато)", desc: "Хэмнэлийг чанд мөрдөхгүйгээр, мэдрэмжээрээ хугацааг сунгаж, агшааж чөлөөтэй тоглох.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="25" text-anchor="middle" fill="white" font-weight="bold">Rubato</text></svg>` },
+        { name: "STRINGENDO", desc: "Яарсан, давчидсан байдлаар хурдыг түргэсгэх.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="20" text-anchor="middle" fill="white" font-style="italic">string.</text></svg>` },
+
+        // 8. НАВИГАЦИ / ДАВТАЛТ (Navigation & Repeats)
+        { name: "ДАВТАЛТ ЭХЛЭХ", desc: "Давтаж тоглох хэсгийн эхлэлийг заана.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white">𝄆</text></svg>` },
+        { name: "ДАВТАЛТ ТӨГСӨХ", desc: "Энэ тэмдэг хүртэл тоглоод эхлэл рүү (эсвэл 𝄆 тэмдэг рүү) буцаж давтана.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white">𝄇</text></svg>` },
+        { name: "VOLTA 1 (1-р төгсгөл)", desc: "Давталтын эхний удаад тоглох хэсэг.", svg: `<svg viewBox="0 0 100 100"><path d="M20,70 L20,30 L80,30" fill="none" stroke="white" stroke-width="4"/><text x="35" y="60" font-size="30" fill="white">1.</text></svg>` },
+        { name: "VOLTA 2 (2-р төгсгөл)", desc: "Хоёр дахь удаагаа давтаж ирэхдээ 1-р төгсгөлийг алгасаж үүнийг тоглоно.", svg: `<svg viewBox="0 0 100 100"><path d="M20,70 L20,30 L80,30" fill="none" stroke="white" stroke-width="4"/><text x="35" y="60" font-size="30" fill="white">2.</text></svg>` },
+        { name: "SEGNO (Сегньо)", desc: "Зохиолын дунд хэсэг рүү үсэрч очих замыг заагч навигацийн тэмдэг.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white">𝄋</text></svg>` },
+        { name: "CODA (Кода)", desc: "Зохиолын төгсгөлийн хэсэг рүү үсрэхийг заасан загалмай бүхий тэмдэг.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white">𝄌</text></svg>` },
+        { name: "DA CAPO (D.C.)", desc: "Зохиолын хамгийн эхнээс нь эхэлж тоглохыг заана.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="30" text-anchor="middle" fill="white" font-weight="bold">D.C.</text></svg>` },
+        { name: "DAL SEGNO (D.S.)", desc: "Сегньо (𝄋) тэмдэг байгаа газар руу буцаж очихыг заана.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="30" text-anchor="middle" fill="white" font-weight="bold">D.S.</text></svg>` },
+        { name: "FINE (Фине)", desc: "Зохиолын төгсгөл.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="30" text-anchor="middle" fill="white" font-weight="bold">Fine</text></svg>` },
+        { name: "D.C. AL FINE", desc: "Эхнээс нь тоглоод 'Fine' гэсэн бичигтэй газар дуусгах.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="20" text-anchor="middle" fill="white" font-weight="bold">D.C. al Fine</text></svg>` },
+        { name: "D.S. AL CODA", desc: "Сегньо руу очоод тоглож байгаад Кода руу үсэрч төгсгөх.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="18" text-anchor="middle" fill="white" font-weight="bold">D.S. al Coda</text></svg>` },
+
+        // 9. ХЭМЖЭЭ (Time Signatures)
+        { name: "ДӨРӨВНИЙ ДӨРВӨН ХЭМЖЭЭ", desc: "Тактанд 4 ширхэг дөрөвт нот багтана. (4/4)", svg: `<svg viewBox="0 0 100 100"><text x="50" y="45" font-size="40" text-anchor="middle" fill="white">4</text><text x="50" y="85" font-size="40" text-anchor="middle" fill="white">4</text></svg>` },
+        { name: "COMMON TIME", desc: "4/4 хэмжээтэй ижил утгатай. 'C' үсгээр тэмдэглэнэ.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="75" font-size="80" text-anchor="middle" fill="white">𝄴</text></svg>` },
+        { name: "CUT TIME (Alla Breve)", desc: "4/4-ийг хоёр хуваасан 2/2 хэмжээ. Хурдан хэмнэлд ашиглана.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="75" font-size="80" text-anchor="middle" fill="white">𝄵</text></svg>` },
+        { name: "ДӨРӨВНИЙ ГУРВАН ХЭМЖЭЭ", desc: "Тактанд 3 ширхэг дөрөвт нот багтана. Вальс бүжгийн хэмнэл. (3/4)", svg: `<svg viewBox="0 0 100 100"><text x="50" y="45" font-size="40" text-anchor="middle" fill="white">3</text><text x="50" y="85" font-size="40" text-anchor="middle" fill="white">4</text></svg>` },
+        { name: "ДӨРӨВНИЙ ХОЁР ХЭМЖЭЭ", desc: "Тактанд 2 ширхэг дөрөвт нот багтана. Марш алхааны хэмнэл. (2/4)", svg: `<svg viewBox="0 0 100 100"><text x="50" y="45" font-size="40" text-anchor="middle" fill="white">2</text><text x="50" y="85" font-size="40" text-anchor="middle" fill="white">4</text></svg>` },
+        { name: "НАЙМНЫ ЗУРГААН ХЭМЖЭЭ", desc: "Тактанд 6 ширхэг наймт нот багтах нийлмэл хэмжээ. (6/8)", svg: `<svg viewBox="0 0 100 100"><text x="50" y="45" font-size="40" text-anchor="middle" fill="white">6</text><text x="50" y="85" font-size="40" text-anchor="middle" fill="white">8</text></svg>` },
+        { name: "НАЙМНЫ ЕСӨН ХЭМЖЭЭ", desc: "Тактанд 9 ширхэг наймт нот багтана. (9/8)", svg: `<svg viewBox="0 0 100 100"><text x="50" y="45" font-size="40" text-anchor="middle" fill="white">9</text><text x="50" y="85" font-size="40" text-anchor="middle" fill="white">8</text></svg>` },
+        { name: "НАЙМНЫ АРВАН ХОЁР ХЭМЖЭЭ", desc: "Тактанд 12 ширхэг наймт нот багтана. Блюз хөгжимд түгээмэл. (12/8)", svg: `<svg viewBox="0 0 100 100"><text x="50" y="45" font-size="40" text-anchor="middle" fill="white">12</text><text x="50" y="85" font-size="40" text-anchor="middle" fill="white">8</text></svg>` },
+        { name: "НАЙМНЫ ГУРВАН ХЭМЖЭЭ", desc: "Тактанд 3 ширхэг наймт нот багтана. (3/8)", svg: `<svg viewBox="0 0 100 100"><text x="50" y="45" font-size="40" text-anchor="middle" fill="white">3</text><text x="50" y="85" font-size="40" text-anchor="middle" fill="white">8</text></svg>` },
+        { name: "ДӨРӨВНИЙ ТАВАН ХЭМЖЭЭ", desc: "Тактанд 5 ширхэг дөрөвт нот багтах тэгш бус хэмжээ. (5/4)", svg: `<svg viewBox="0 0 100 100"><text x="50" y="45" font-size="40" text-anchor="middle" fill="white">5</text><text x="50" y="85" font-size="40" text-anchor="middle" fill="white">4</text></svg>` },
+
+        // 10. ИЛЭРХИЙЛЭЛ / ЗААНА (Expression & Style)
+        { name: "CANTABILE", desc: "Дуулж байгаа мэт уянгалаг тоглохыг заана.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="20" text-anchor="middle" fill="white" font-style="italic">cantabile</text></svg>` },
+        { name: "DOLCE (Дольче)", desc: "Чихэнд чимэгтэй, чихэр мэт амттай, энхрий зөөлөн тоглох.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="25" text-anchor="middle" fill="white" font-style="italic">dolce</text></svg>` },
+        { name: "MAESTOSO", desc: "Сүр жавхлантай, бадрангуй, ёслолын байдалтай тоглох.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="20" text-anchor="middle" fill="white" font-style="italic">maestoso</text></svg>` },
+        { name: "LEGATO (Легато)", desc: "Нотуудыг хооронд нь ямар ч тасалдалгүй, маш жигд уян хатан холбож тоглох.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="25" text-anchor="middle" fill="white" font-style="italic">legato</text></svg>` },
+        { name: "PESANTE", desc: "Хүнд, жин тавьж тоглох.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="25" text-anchor="middle" fill="white" font-style="italic">pesante</text></svg>` },
+        { name: "SOSTENUTO", desc: "Нотын эгшиглэлтийг дэмжиж, барьж тоглох.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="20" text-anchor="middle" fill="white" font-style="italic">sostenuto</text></svg>` },
+        { name: "ANIMATO", desc: "Амь орсон мэт сэргэлэн, хөдөлгөөнтэй тоглох.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="22" text-anchor="middle" fill="white" font-style="italic">animato</text></svg>` },
+        { name: "CON BRIO", desc: "Цог жавхлантай, гялалзсан хурц байдлаар.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="22" text-anchor="middle" fill="white" font-style="italic">con brio</text></svg>` },
+        { name: "ESPRESSIVO", desc: "Сэтгэлийн хөдөлгөөнөө илэрхийлж, мэдрэмжтэй тоглох.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="20" text-anchor="middle" fill="white" font-style="italic">espressivo</text></svg>` },
+        { name: "GRAZIOSO", desc: "Уян налархай, гоолиг тансаг тоглох.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="22" text-anchor="middle" fill="white" font-style="italic">grazioso</text></svg>` },
+        { name: "AGITATO", desc: "Догдолсон, түгшсэн, тайван бус байдлаар.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="25" text-anchor="middle" fill="white" font-style="italic">agitato</text></svg>` },
+        { name: "BRILLANTE", desc: "Гялалзсан, маш тод, гайхалтай аргаар тоглох.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="22" text-anchor="middle" fill="white" font-style="italic">brillante</text></svg>` },
+        { name: "SCHERZANDO", desc: "Тоглоомтой, хөгжилтэй, дэггүй байдлаар.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="20" text-anchor="middle" fill="white" font-style="italic">scherzando</text></svg>` },
+        { name: "TRANQUILLO", desc: "Амар амгалан, тайван тоглох.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="22" text-anchor="middle" fill="white" font-style="italic">tranquillo</text></svg>` },
+        { name: "TUTTI", desc: "Оркестр эсвэл хамтлагийн бүх хөгжимчид нэгэн зэрэг тоглохыг заана.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="25" text-anchor="middle" fill="white" font-weight="bold">Tutti</text></svg>` },
+        { name: "SOLO", desc: "Нэг хөгжимчин гоцлон тоглох хэсэг.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="25" text-anchor="middle" fill="white" font-weight="bold">Solo</text></svg>` },
+        { name: "PIZZICATO", desc: "Нумат хөгжмийн (хийл зэрэг) утсыг хуруугаараа татаж дуугаргах арга.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="25" text-anchor="middle" fill="white" font-style="italic">pizz.</text></svg>` },
+        { name: "ARCO", desc: "Pizzicato-ийн дараа буцаж нумаараа хөрөөдөж тоглохыг заана.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="25" text-anchor="middle" fill="white" font-style="italic">arco</text></svg>` },
+        { name: "SUBITO", desc: "Гэнэт, огцом үйлдэл хийх (Жин: Subito piano - гэнэт аяархан болох).", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="25" text-anchor="middle" fill="white" font-style="italic">subito</text></svg>` },
+        { name: "POCO A POCO", desc: "Бага багаар, аажмаар өөрчлөх.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="16" text-anchor="middle" fill="white" font-style="italic">poco a poco</text></svg>` },
+        { name: "MOLTO", desc: "Маш ихээр (Жин: Molto allegro - маш хурдан).", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="25" text-anchor="middle" fill="white" font-style="italic">molto</text></svg>` },
+        { name: "PIÙ", desc: "Илүү (Жин: Più mosso - Илүү хөдөлгөөнтэй, хурдан).", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="30" text-anchor="middle" fill="white" font-style="italic">più</text></svg>` },
+        { name: "MENO", desc: "Бага (Жин: Meno mosso - Бага хөдөлгөөнтэй, удаан).", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="30" text-anchor="middle" fill="white" font-style="italic">meno</text></svg>` },
+        { name: "SEMPRE", desc: "Үргэлж, байнга (Жин: Sempre staccato - Үргэлж тасалж тоглох).", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="25" text-anchor="middle" fill="white" font-style="italic">sempre</text></svg>` },
+        { name: "SENZA", desc: "Гүйгээр, үгүйгээр (Жин: Senza sordino - Дуу намсгагчгүйгээр тоглох).", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="25" text-anchor="middle" fill="white" font-style="italic">senza</text></svg>` }
     ];
 
     let currentPage = 0;
     let currentUser = "";
     let currentRating = 0;
-    let soundEnabled = true;
 
     function startApp() {
         const input = document.getElementById('nicknameInput').value.trim();
