@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Хөгжмийн Ертөнцийн Хэл - Цэцэгжаргал 9Г</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght=700;900&family=Montserrat:wght=300;400;600;700&family=Russo+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Montserrat:wght@300;400;600;700&family=Russo+One&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -144,7 +144,7 @@
             <input type="text" id="nicknameInput" class="nickname-input" placeholder="Жишээ: Anu, Temka..." maxlength="20" autocomplete="off">
             <div class="nickname-error" id="nicknameError">Эхлээд нэрээ оруулна уу!</div>
         </div>
-        <button class="start-btn" onclick="startApp()">УНШИЖ ЭХЛЭХ</button>
+        <button class="start-btn" id="startBtn" onclick="startApp()">УНШИЖ ЭХЛЭХ</button>
     </div>
 </div>
 
@@ -198,7 +198,7 @@
 </div>
 
 <script>
-    // GitHub Pages дээрх хөтчийн хамгаалалтыг шийдэхийн тулд дууг энд бэлдэж үлдээнэ
+    // Зургийн дагуу дууны файлыг яг зөв оноож өгөв
     const clickSound = new Audio('universfield-computer-mouse-click-352734.mp3');
     let soundEnabled = true;
 
@@ -207,28 +207,26 @@
         clickSound.volume = volume / 100;
     }
 
-    // Хэрэглэгч товчлуур дарах үед дуу тоглуулах үндсэн функц
     function playClickSound() {
         if (soundEnabled) {
             clickSound.currentTime = 0;
-            clickSound.play().catch(e => console.log("Дуу тоглуулахад алдаа гарлаа (Хөтчийн хамгаалалт):", e));
+            clickSound.play().catch(e => console.log("Дууны хамгаалалт тайлагдсангүй:", e));
         }
     }
 
-    // Хуудас ачаалагдахад товчлууруудад дууг холбох
-    document.addEventListener('DOMContentLoaded', () => {
-        changeVolume();
-        setupButtonSounds();
-    });
-
+    // Бүх товчлуурт дарах дууг автоматаар холбох функц
     function setupButtonSounds() {
-        const allButtons = document.querySelectorAll('button');
+        const allButtons = document.querySelectorAll('button, .nav-btn, .star-btn, .feedback-submit, .start-btn');
         allButtons.forEach(btn => {
-            // Олон дахин ажиллахаас сэргийлж хуучин event-ийг цэвэрлэнэ
             btn.removeEventListener('click', playClickSound);
             btn.addEventListener('click', playClickSound);
         });
     }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        changeVolume();
+        setupButtonSounds();
+    });
 
     // --- 105 ХӨГЖМИЙН ТЭМДЭГ, НЭР ТОМЬЁО ---
     const musicData = [
@@ -240,16 +238,16 @@
         { name: "ЦОХИЛТТЫН ТҮЛХҮҮР", desc: "Тодорхой эгшгийн өндөргүй, хэмнэлт цохилтот хөгжмийн зэмсэгт зориулагдсан түлхүүр.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white">𝄣</text></svg>` },
         
         // 2. НОТУУД (Notes)
-        { name: "БРЕВЕ (Хос бүтэн нот)", desc: "Бүтэн нотоос 2 дахин урт буюу 8 цохилтын турш эгшиглэнэ.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="70" font-size="60" text-anchor="middle" fill="white">𝅜</text></svg>` },
-        { name: "БҮТЭН НОТ", desc: "4 цохилтын турш эгшиглэх хугацаатай. Хоосон зууван толгойтой.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="70" font-size="60" text-anchor="middle" fill="white">𝅝</text></svg>` },
-        { name: "ХАГАС НОТ", desc: "2 цохилтоор эгшиглэнэ. Бүтэн нотын хагастай тэнцэнэ.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white">𝅗𝅥</text></svg>` },
-        { name: "ДӨРӨВТ НОТ", desc: "1 цохилтоор эгшиглэнэ. Хар толгойтой, иштэй.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white">𝅘𝅥</text></svg>` },
-        { name: "НАЙМТ НОТ", desc: "0.5 буюу хагас цохилтоор эгшиглэнэ. Ишнээсээ 1 сүүлтэй.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white">𝅘𝅥𝅮</text></svg>` },
-        { name: "16-Т НОТ", desc: "0.25 буюу дөрөвний нэг цохилтоор эгшиглэнэ. 2 сүүлтэй.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white">𝅘𝅥𝅯</text></svg>` },
-        { name: "32-Т НОТ", desc: "Наймны нэг цохилтоор эгшиглэнэ. 3 сүүлтэй маш богино нот.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white">𝅘𝅥𝅰</text></svg>` },
-        { name: "64-Т НОТ", desc: "Маш хурдан хугацаанд эгшиглэх 4 сүүлтэй нот.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white">𝅘𝅥𝅱</text></svg>` },
-        { name: "ЦЭГТЭЙ ХАГАС НОТ", desc: "3 цохилтоор эгшиглэнэ. Цэг нь нотын хугацааг өөрийнх нь хагасаар уртасгадаг.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="70" text-anchor="middle" fill="white">𝅗𝅥.</text></svg>` },
-        { name: "ЦЭГТЭЙ ДӨРӨВТ НОТ", desc: "1.5 цохилтоор эгшиглэнэ.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="70" text-anchor="middle" fill="white">𝅘𝅥.</text></svg>` },
+        { name: "БРЕВЕ (Хос бүтэн нот)", desc: "Бүтэн нотоос 2 дахин урт буюу 8 цохилтын турш эгшиглэнэ.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="70" font-size="60" text-anchor="middle" fill="white"></text></svg>` },
+        { name: "БҮТЭН НОТ", desc: "4 цохилтын турш эгшиглэх хугацаатай. Хоосон зууван толгойтой.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="70" font-size="60" text-anchor="middle" fill="white"></text></svg>` },
+        { name: "ХАГАС НОТ", desc: "2 цохилтоор эгшиглэнэ. Бүтэн нотын хагастай тэнцэнэ.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white"></text></svg>` },
+        { name: "ДӨРӨВТ НОТ", desc: "1 цохилтоор эгшиглэнэ. Хар толгойтой, иштэй.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white"></text></svg>` },
+        { name: "НАЙМТ НОТ", desc: "0.5 буюу хагас цохилтоор эгшиглэнэ. Ишнээсээ 1 сүүлтэй.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white"></text></svg>` },
+        { name: "16-Т НОТ", desc: "0.25 буюу дөрөвний нэг цохилтоор эгшиглэнэ. 2 сүүлтэй.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white"></text></svg>` },
+        { name: "32-Т НОТ", desc: "Наймны нэг цохилтоор эгшиглэнэ. 3 сүүлтэй маш богино нот.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white"></text></svg>` },
+        { name: "64-Т НОТ", desc: "Маш хурдан хугацаанд эгшиглэх 4 сүүлтэй нот.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white"></text></svg>` },
+        { name: "ЦЭГТЭЙ ХАГАС НОТ", desc: "3 цохилтоор эгшиглэнэ. Цэг нь нотын хугацааг өөрийнх нь хагасаар уртасгадаг.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="70" text-anchor="middle" fill="white">.</text></svg>` },
+        { name: "ЦЭГТЭЙ ДӨРӨВТ НОТ", desc: "1.5 цохилтоор эгшиглэнэ.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="70" text-anchor="middle" fill="white">.</text></svg>` },
 
         // 3. ЗОГСОЦУУД (Rests)
         { name: "БҮТЭН ЗОГСОЦ", desc: "4 цохилтын турш чимээгүй байна. 4-р шугамаас доош дүүжлэгдсэн хэлбэртэй.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white">𝄻</text></svg>` },
@@ -257,8 +255,8 @@
         { name: "ДӨРӨВТ ЗОГСОЦ", desc: "1 цохилтын турш чимээгүй байна.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white">𝄽</text></svg>` },
         { name: "НАЙМТ ЗОГСОЦ", desc: "Хагас цохилтын турш чимээгүй байна.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white">𝄾</text></svg>` },
         { name: "16-Т ЗОГСОЦ", desc: "0.25 цохилтоор зогсоно. 2 толгойтой.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white">𝄿</text></svg>` },
-        { name: "32-Т ЗОГСОЦ", desc: "Маш богино хугацааны зогсоц. 3 толгойтой.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white">𝅀</text></svg>` },
-        { name: "64-Т ЗОГСОЦ", desc: "Нүд ирмэх зуурын зогсоц. 4 толгойтой.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white">𝅁</text></svg>` },
+        { name: "32-Т ЗОГСОЦ", desc: "Маш богино хугацааны зогсоц. 3 толгойтой.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white"></text></svg>` },
+        { name: "64-Т ЗОГСОЦ", desc: "Нүд ирмэх зуурын зогсоц. 4 толгойтой.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white"></text></svg>` },
 
         // 4. ТЭМДЭГҮҮД / АЛЬТЕРАЦИ (Accidentals)
         { name: "ДИЕЗ (Sharp)", desc: "Эгшгийг хагас тон (алхам)-оор өндөржүүлнэ.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle" fill="white">♯</text></svg>` },
@@ -297,8 +295,8 @@
         { name: "TIE (Залгаас)", desc: "Ижил өндөртэй хоёр нотыг холбож, нийлбэр хугацаагаар нь нэгтгэн дуугаргана.", svg: `<svg viewBox="0 0 100 100"><path d="M20,60 Q50,80 80,60" fill="none" stroke="white" stroke-width="5"/></svg>` },
         { name: "GLISSANDO", desc: "Нэг нотоос нөгөө нот руу завсрын бүх эгшгүүдийг гулсуулан тоглох арга.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="25" text-anchor="middle" fill="white" font-style="italic">gliss.</text></svg>` },
         { name: "ARPEGGIO", desc: "Аккордын нотуудыг нэгэн зэрэг бус, доороос нь дээш нь ар араас нь цувруулан тоглоно.", svg: `<svg viewBox="0 0 100 100"><path d="M45,20 Q55,30 45,40 Q35,50 45,60 Q55,70 45,80" fill="none" stroke="white" stroke-width="4"/></svg>` },
-        { name: "APPOGGIATURA", desc: "Үндсэн нотын өмнө бичигдсэн жижиг нот. Өөрийн хугацааг үндсэн нотоос авч тоглоно.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="70" font-size="40" text-anchor="middle" fill="white">𝅘𝅥𝅮</text></svg>` },
-        { name: "ACCIACCATURA", desc: "Ишэн дундуураа зураастай жижиг нот. Үндсэн нотын өмнө маш хурдан шүргэж тоглоно.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="70" font-size="40" text-anchor="middle" fill="white">𝅘𝅥𝅯</text></svg>` },
+        { name: "APPOGGIATURA", desc: "Үндсэн нотын өмнө бичигдсэн жижиг нот. Өөрийн хугацааг үндсэн нотоос авч тоглоно.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="70" font-size="40" text-anchor="middle" fill="white"></text></svg>` },
+        { name: "ACCIACCATURA", desc: "Ишэн дундуураа зураастай жижиг нот. Үндсэн нотын өмнө маш хурдан шүргэж тоглоно.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="70" font-size="40" text-anchor="middle" fill="white"></text></svg>` },
 
         // 7. ХУРД (Tempo)
         { name: "GRAVE (Граве)", desc: "Маш удаан, хүнд, сүрлэг хурд.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="25" text-anchor="middle" fill="white" font-weight="bold">Grave</text></svg>` },
@@ -354,14 +352,14 @@
         { name: "LEGATO (Легато)", desc: "Нотуудыг хооронд нь ямар ч тасалдалгүй, маш жигд уян хатан холбож тоглох.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="25" text-anchor="middle" fill="white" font-style="italic">legato</text></svg>` },
         { name: "PESANTE", desc: "Хүнд, жин тавьж тоглох.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="25" text-anchor="middle" fill="white" font-style="italic">pesante</text></svg>` },
         { name: "SOSTENUTO", desc: "Нотын эгшиглэлтийг дэмжиж, барьж тоглох.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="20" text-anchor="middle" fill="white" font-style="italic">sostenuto</text></svg>` },
-        { name: "ANIMATO", desc: "Амь орсон мэт сэргэлэн, хөдөлгөөнтэй тоглох.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="22" text-anchor="middle" fill="white" font-style="italic">animato</text></svg>` },
+        { name: "ANIMATO", desc: "Амь орсон мэт sэргэлэн, хөдөлгөөнтэй тоглох.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="22" text-anchor="middle" fill="white" font-style="italic">animato</text></svg>` },
         { name: "CON BRIO", desc: "Цог жавхлантай, гялалзсан хурц байдлаар.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="22" text-anchor="middle" fill="white" font-style="italic">con brio</text></svg>` },
         { name: "ESPRESSIVO", desc: "Сэтгэлийн хөдөлгөөнөө илэрхийлж, мэдрэмжтэй тоглох.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="20" text-anchor="middle" fill="white" font-style="italic">espressivo</text></svg>` },
-        { name: "GRAZIOSO", desc: "Уян naлархай, гоолиг тансаг тоглох.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="22" text-anchor="middle" fill="white" font-style="italic">grazioso</text></svg>` },
+        { name: "GRAZIOSO", desc: "Уян налархай, гоолиг тансаг тоглох.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="22" text-anchor="middle" fill="white" font-style="italic">grazioso</text></svg>` },
         { name: "AGITATO", desc: "Догдолсон, түгшсэн, тайван бус байдлаар.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="25" text-anchor="middle" fill="white" font-style="italic">agitato</text></svg>` },
         { name: "BRILLANTE", desc: "Гялалзсан, маш тод, гайхалтай аргаар тоглох.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="22" text-anchor="middle" fill="white" font-style="italic">brillante</text></svg>` },
         { name: "SCHERZANDO", desc: "Тоглоомтой, хөгжилтэй, дэггүй байдлаар.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="20" text-anchor="middle" fill="white" font-style="italic">scherzando</text></svg>` },
-        { name: "TRANQUILLO", desc: "Амар амгалан, тайван тоглох.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="22" font-size="22" text-anchor="middle" fill="white" font-style="italic">tranquillo</text></svg>` },
+        { name: "TRANQUILLO", desc: "Амар амгалан, тайван тоглох.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="22" text-anchor="middle" fill="white" font-style="italic">tranquillo</text></svg>` },
         { name: "TUTTI", desc: "Оркестр эсвэл хамтлагийн бүх хөгжимчид нэгэн зэрэг тоглохыг заана.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="25" text-anchor="middle" fill="white" font-weight="bold">Tutti</text></svg>` },
         { name: "SOLO", desc: "Нэг хөгжимчин гоцлон тоглох хэсэг.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="25" text-anchor="middle" fill="white" font-weight="bold">Solo</text></svg>` },
         { name: "PIZZICATO", desc: "Нумат хөгжмийн (хийл зэрэг) утсыг хуруугаараа татаж дуугаргах арга.", svg: `<svg viewBox="0 0 100 100"><text x="50" y="60" font-size="25" text-anchor="middle" fill="white" font-style="italic">pizz.</text></svg>` },
@@ -387,7 +385,7 @@
         }
         currentUser = input;
 
-        // Хөтчийн хамгаалалтыг идэвхгүй болгохын тулд дууг нэг удаа аяархан тоглуулж нээнэ
+        // Хөтчийн Autoplay-ийг "Уншиж эхлэх" товч дээр дарах үед нь идэвхжүүлж байна
         clickSound.play().then(() => {
             clickSound.currentTime = 0;
         }).catch(e => console.log("Init sound pass"));
@@ -406,8 +404,8 @@
         document.getElementById('pageCounter').innerText = `${String(index + 1).padStart(3, '0')} / ${String(musicData.length).padStart(3, '0')}`;
     }
 
-    function nextPage() { if(currentPage < musicData.length - 1) loadPage(currentPage + 1); }
-    function prevPage() { if(currentPage > 0) loadPage(currentPage - 1); }
+    function nextPage() { if(currentPage < musicData.length - 1) { loadPage(currentPage + 1); } }
+    function prevPage() { if(currentPage > 0) { loadPage(currentPage - 1); } }
 
     function toggleSound() {
         soundEnabled = !soundEnabled;
@@ -438,7 +436,7 @@
         setRating(0);
         document.getElementById('feedbackCount').innerText = `${list.children.length} сэтгэгдэл`;
         
-        // Шинээр нэмэгдсэн товчлууруудад дууг дахин холбох
+        // Шинэ товчлууруудад дууг дахин холбох
         setupButtonSounds();
     }
 
@@ -448,7 +446,6 @@
         if(index !== -1) loadPage(index);
     }
 
-    // Анхны хуудсыг харуулах
     loadPage(0);
 </script>
 
